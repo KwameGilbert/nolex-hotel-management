@@ -27,7 +27,7 @@ export default function PaystackPayment({
     publicKey: 'pk_test_3a243aa0a24572b40ef92531641e5809cd500d3b', // Replace with your actual Paystack public key
     firstname: name.split(' ')[0],
     lastname: name.split(' ')[1] || '',
-    currency: 'USD',
+    currency: 'GHS',
   };
   
   // Initialize Paystack
@@ -45,6 +45,7 @@ export default function PaystackPayment({
   // Define callback for payment cancellation
   const onClose = () => {
     console.log('Payment closed');
+    
   };
 
   return (
