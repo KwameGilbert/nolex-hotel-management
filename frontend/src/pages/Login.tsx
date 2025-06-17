@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Mail, User, Lock, X, ArrowLeft, Eye, EyeOff } from "lucide-react";
-import Image1 from "../../public/assets/images/image3.jpg";
+import Image1 from "/assets/images/image3.jpg";
 import axios from "axios";
 import Swal from "sweetalert2";
 

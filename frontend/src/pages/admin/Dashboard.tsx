@@ -2,10 +2,10 @@
 import { useState, useEffect } from 'react';
 import { CalendarDays, Bed, Plus, Trash2Icon, Wrench, DoorClosedLockedIcon  } from 'lucide-react';
 import { RevenueChart } from '../../components/Revenue';
-import Image1 from '../../../public/assets/images/image1.jpg';
-import Image2 from '../../../public/assets/images/image2.jpg';
-import Image3 from '../../../public/assets/images/image3.jpg';
-import Image4 from '../../../public/assets/images/image4.jpg';
+import Image1 from '/assets/images/image1.jpg';
+import Image2 from '/assets/images/image2.jpg';
+import Image3 from '/assets/images/image3.jpg';
+import Image4 from '/assets/images/image4.jpg';
 import DashboardStat from '../../components/admin-components/DashboardStat';
 
 export default function Dashboard(){
