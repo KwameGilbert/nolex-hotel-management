@@ -247,19 +247,7 @@ export default function Login() {
 
     // Expiry check
     const forgotData = localStorage.getItem("forgotPasswordData");
-    if (forgotData) {
-      const { expires_in } = JSON.parse(forgotData);
-      const nowSeconds = Math.floor(Date.now() / 1000);
-      if (nowSeconds > expires_in) {
-        Swal.fire({
-          title: "OTP Expired",
-          text: "The OTP has expired. Please request a new one.",
-          icon: "error",
-        });
-        closeAllModals();
-        return;
-      }
-    }
+    
 
     setIsVerifyingOtp(true);
     try {
