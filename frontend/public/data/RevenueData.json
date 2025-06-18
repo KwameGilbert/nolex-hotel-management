@@ -1,0 +1,46 @@
+{
+  "revenuedata": [
+    {
+      "month": "Jan",
+      "total": 24000,
+      "rooms": 180000,
+      "food": 40000,
+      "events": 20000
+    },
+    {
+      "month": "Feb",
+      "total": 210000,
+      "rooms": 160000,
+      "food": 35000,
+      "events": 15000
+    },
+    {
+      "month": "Mar",
+      "total": 280000,
+      "rooms": 210000,
+      "food": 45000,
+      "events": 25000
+    },
+    {
+      "month": "Apr",
+      "total": 320000,
+      "rooms": 240000,
+      "food": 50000,
+      "events": 30000
+    },
+    {
+      "month": "May",
+      "total": 360000,
+      "rooms": 270000,
+      "food": 55000,
+      "events": 30000
+    },
+    {
+      "month": "Jun",
+      "total": 410000,
+      "rooms": 310000,
+      "food": 60000,
+      "events": 40000
+    }
+  ]
+}

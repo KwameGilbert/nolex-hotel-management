@@ -1,0 +1,32 @@
+{
+  "stat": [
+    {
+      "id": 1,
+      "title": "Total Revenue",
+      "value": 10,
+      "description": "Target: $15,000",
+      "change": "+12%"
+    },
+    {
+      "id": 2,
+      "title": "Total Branches",
+      "value": 2,
+      "description": "Based on today's confirmed arrivals",
+      "change": "-5 from yesterday"
+    },
+    {
+      "id": 3,
+      "title": "Total Customers",
+      "value": 100,
+      "description": "Based on today's confirmed attendance",
+       "change": "+8% from yesterday"
+    },
+    {
+      "id": 4,
+      "title": "Total Employees",
+      "value": 50,
+      "description": "Based on today's confirmed attendance",
+      "change": "-3 from yesterday"
+    }
+  ]
+}

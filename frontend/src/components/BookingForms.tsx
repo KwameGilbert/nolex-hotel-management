@@ -1,6 +1,7 @@
 import { User, CreditCard, Calendar, Bed, X, Check } from "lucide-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 // Define interfaces for room data
@@ -152,10 +153,13 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     };
 
     // Make API call to create booking
-    const response = await axios.post('https://hotel-management-system-5gk8.onrender.com/v1/bookings', bookingData );
-   
-    console.log('Booking successful:', response.data);
+    const response = await axios.post(
+      'https://hotel-management-system-5gk8.onrender.com/v1/bookings',
+      bookingData
+    );
+
     if (response.data.status === 'success') {
+      console.log('Booking successful:', response.data);
       const booking = response.data.booking;
       // Show sweet alert and redirect to payment page
       Swal.fire({
@@ -165,7 +169,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         confirmButtonText: 'Proceed to Payment'
       }).then(() => {
         // Redirect to payment page with the booking ID
-        window.location.href = `/admin/pay-booking/${booking.booking_code}`;
+       <Link to={`/admin/pay-booking/${booking.booking_code}`}>
+         Proceed to Payment
+       </Link>
       });
     }
   } catch (error) {

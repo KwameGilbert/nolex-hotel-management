@@ -22,6 +22,9 @@ import OTP from './pages/OTP.tsx'
 import RoomType from './pages/admin/RoomType.tsx'
 import PayBooking from './pages/admin/PayBooking.tsx'
 import NotFoundPage from './pages/404.tsx'
+import CeoMainLayout from './components/layout/ceo/CeoMainLayout.tsx'
+import CeoDashbord from './pages/super-admin/Dashbord.tsx'
+import CeoRevenue from './pages/super-admin/CeoRevenue.tsx'
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -56,8 +59,18 @@ createRoot(document.getElementById("root")!).render(
         <Route path="make-reports" element={<ReportIssueForm />} />
       </Route>
 
+      {/* Protected CEO Routes */}
+      <Route path="/ceo" element={<ProtectedRoute><CeoMainLayout/></ProtectedRoute>}>
+        <Route index element={<CeoDashbord />} />
+        <Route path="revenue" element={<CeoRevenue/>}/>
+        <Route path="staff" element={<Staff />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="issues" element={<Issues />} />
+        <Route path="customers" element={<Customer />} />
+      </Route>
+
       {/* 404 catch-all route - must be LAST in the Routes list */}
-      <Route path="*" element={<NotFoundPage />} />
+      <Route index element={<NotFoundPage />} />
     </Routes>
   </BrowserRouter>
 );

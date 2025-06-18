@@ -1,0 +1,39 @@
+{
+  "occupancyData": [
+    {
+      "day": "Mon",
+      "occupancy": 78,
+      "capacity": 100
+    },
+    {
+      "day": "Tue",
+      "occupancy": 85,
+      "capacity": 100
+    },
+    {
+      "day": "Wed",
+      "occupancy": 92,
+      "capacity": 100
+    },
+    {
+      "day": "Thu",
+      "occupancy": 88,
+      "capacity": 100
+    },
+    {
+      "day": "Fri",
+      "occupancy": 95,
+      "capacity": 100
+    },
+    {
+      "day": "Sat",
+      "occupancy": 98,
+      "capacity": 100
+    },
+    {
+      "day": "Sun",
+      "occupancy": 82,
+      "capacity": 100
+    }
+  ]
+}
