@@ -1,0 +1,40 @@
+{
+  "amenities": [
+    {
+      "title": "Infinity Pool",
+      "description": "Our stunning infinity pool offers breathtaking views and a serene environment for relaxation.",
+      "icon": "SwimmingPool",
+      "image": "https://readdy.ai/api/search-image?query=Luxurious%20hotel%20infinity%20pool%20...&width=600&height=400"
+    },
+    {
+      "title": "Spa & Wellness",
+      "description": "Rejuvenate your body and mind with our comprehensive spa treatments and wellness programs.",
+      "icon": "Spa",
+      "image": "https://readdy.ai/api/search-image?query=Elegant%20hotel%20spa%20with%20treatment%20...&width=600&height=400"
+    },
+    {
+      "title": "Fine Dining",
+      "description": "Experience culinary excellence with our award-winning chefs and exquisite menu selections.",
+      "icon": "Utensils",
+      "image": "https://readdy.ai/api/search-image?query=Sophisticated%20hotel%20restaurant%20...&width=600&height=400"
+    },
+    {
+      "title": "Fitness Center",
+      "description": "Stay active in our state-of-the-art fitness center featuring premium equipment and personal trainers.",
+      "icon": "Dumbbell",
+      "image": "https://readdy.ai/api/search-image?query=Modern%20hotel%20fitness%20center%20...&width=600&height=400"
+    },
+    {
+      "title": "Private Beach",
+      "description": "Enjoy exclusive access to our pristine private beach with premium loungers and attentive service.",
+      "icon": "Umbrella",
+      "image": "https://readdy.ai/api/search-image?query=Exclusive%20hotel%20private%20beach%20...&width=600&height=400"
+    },
+    {
+      "title": "Executive Lounge",
+      "description": "Access our exclusive lounge offering premium services, refreshments, and a sophisticated atmosphere.",
+      "icon": "Martini",
+      "image": "https://readdy.ai/api/search-image?query=Sophisticated%20hotel%20executive%20lounge%20...&width=600&height=400"
+    }
+  ]
+}
