@@ -1,0 +1,46 @@
+This JSON represents the structure of the data that the frontend component expects. The goal is to replace the hardcoded data with dynamic data fetched from your API.
+
+Here are the proposed API endpoints and details for each section:
+
+1. Summary Data (for the top cards)
+    - Proposed Endpoint: GET /api/reports/summary
+    - Description: This endpoint should return the aggregated summary metrics (total revenue, average occupancy, etc.) for the specified period.
+    - Request Parameters:
+      * dateRange (string, optional): Valid values: '7days', '30days', '3months', '1year'. Default if not provided: '7days'.
+    - Data Structure: Matches the summaryData object in the JSON. The changePercentage fields should indicate the percentage change compared to the previous equivalent period.
+
+2. Daily Revenue & Bookings Data (for the Bar Chart)
+    - Proposed Endpoint: GET /api/reports/revenue-and-bookings
+    - Description: Returns daily revenue and bookings figures.
+    - Request Parameters:
+      * dateRange (string, optional): Valid values: '7days', '30days', '3months', '1year'. Default if not provided: '7days'.
+    - Data Structure: Matches the revenueData array in the JSON. Dates should be in YYYY-MM-DD format.
+
+3. Occupancy Rate Trend Data (for the Line Chart)
+    - Proposed Endpoint: GET /api/reports/occupancy-trend
+    - Description: Returns monthly occupancy rate trends.
+    - Request Parameters:
+      * dateRange (string, optional): Valid values: '7days', '30days', '3months', '1year'. Default if not provided: '7days'.
+    - Data Structure: Matches the occupancyData array in the JSON.
+
+4. Room Type Bookings Data (for the Pie Chart)
+    - Proposed Endpoint: GET /api/reports/room-type-distribution
+    - Description: Returns the distribution of bookings across different room types.
+    - Request Parameters:
+      * dateRange (string, optional): Valid values: '7days', '30days', '3months', '1year'. Default if not provided: '7days'.
+    - Data Structure: Matches the roomTypeData array in the JSON. The value field should represent the percentage of total bookings for that room type.
+
+5. Payment Methods Data (for the list)
+    - Proposed Endpoint: GET /api/reports/payment-methods
+    - Description: Returns the breakdown of revenue by payment method.
+    - Request Parameters:
+      * dateRange (string, optional): Valid values: '7days', '30days', '3months', '1year'. Default if not provided: '7days'.
+    - Data Structure: Matches the paymentMethodData array in the JSON. amount is the total value, percentage is its share of total revenue.
+
+6. Export Report Functionality
+    - Proposed Endpoint: GET /api/reports/export
+    - Description: This endpoint should generate and return a downloadable report file (e.g., CSV or PDF).
+    - Request Parameters:
+      * dateRange (string, required): Valid values: '7days', '30days', '3months', '1year'.
+      * format (string, optional): Desired output format, e.g., 'csv', 'pdf'. Default: 'csv'.
+    - Response: The backend should respond with the generated file for download.
