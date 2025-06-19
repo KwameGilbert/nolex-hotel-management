@@ -1,0 +1,57 @@
+{
+  "summaryData": {
+    "totalRevenue": 15200,
+    "totalRevenueChangePercentage": 12,
+    "averageOccupancy": 87,
+    "averageOccupancyChangePercentage": 5,
+    "totalBookings": 101,
+    "totalBookingsChangePercentage": 8,
+    "averageDailyRate": 150,
+    "averageDailyRateChangePercentage": 3
+  },
+  "revenueData": [
+    {
+      "date": "2024-01-10",
+      "revenue": 1200,
+      "bookings": 8
+    },
+    { "date": "2024-01-11", "revenue": 1800, "bookings": 12 },
+    { "date": "2024-01-12", "revenue": 2200, "bookings": 15 },
+    { "date": "2024-01-13", "revenue": 1600, "bookings": 10 },
+    { "date": "2024-01-14", "revenue": 2800, "bookings": 18 },
+    { "date": "2024-01-15", "revenue": 3200, "bookings": 22 },
+    { "date": "2024-01-16", "revenue": 2400, "bookings": 16 }
+  ],
+  "occupancyData": [
+    {
+      "month": "Jan",
+      "occupancy": 85
+    },
+    { "month": "Feb", "occupancy": 92 },
+    { "month": "Mar", "occupancy": 78 },
+    { "month": "Apr", "occupancy": 88 },
+    { "month": "May", "occupancy": 95 },
+    { "month": "Jun", "occupancy": 89 }
+  ],
+  "roomTypeData": [
+    {
+      "name": "Standard",
+      "value": 35,
+      "color": "#8884d8"
+    },
+    { "name": "Deluxe", "value": 28, "color": "#82ca9d" },
+    { "name": "Suite", "value": 22, "color": "#ffc658" },
+    { "name": "Executive", "value": 15, "color": "#ff7300" }
+  ],
+  "paymentMethodData": [
+    {
+      "method": "Credit Card",
+      "amount": 45000,
+      "percentage": 60
+    },
+    { "method": "Cash", "amount": 22500, "percentage": 30 },
+    { "method": "Mobile Money", "amount": 5625, "percentage": 7.5 },
+    { "method": "Bank Transfer", "amount": 1875, "percentage": 2.5 }
+  ],
+  "exportReportEndpoint": "The backend should provide an endpoint for exporting reports (e.g., /api/reports/export) which returns a file download based on dateRange and format (csv, pdf)."
+}
