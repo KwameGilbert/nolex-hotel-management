@@ -1,7 +1,6 @@
 import { User, CreditCard, Calendar, Bed, X, Check } from "lucide-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 // Define interfaces for room data
@@ -158,8 +157,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       bookingData
     );
 
+    console.log('Booking successful:', response.data);
     if (response.data.status === 'success') {
-      console.log('Booking successful:', response.data);
       const booking = response.data.booking;
       // Show sweet alert and redirect to payment page
       Swal.fire({
@@ -169,9 +168,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         confirmButtonText: 'Proceed to Payment'
       }).then(() => {
         // Redirect to payment page with the booking ID
-       <Link to={`/admin/pay-booking/${booking.booking_code}`}>
-         Proceed to Payment
-       </Link>
+        window.location.href = `/admin/pay-booking/${booking.booking_code}`;
       });
     }
   } catch (error) {
