@@ -129,7 +129,7 @@ export default function BookingsTable() {
     if (isNaN(numericAmount)) {
       return "$0.00";
     }
-    return `$${numericAmount.toFixed(2)}`;
+    return `${numericAmount.toFixed(2)}`;
   };
 
   // ----------- FIXED: Edit Modal Logic -----------
@@ -256,51 +256,99 @@ export default function BookingsTable() {
   }
 
   return (
-    <div>
-      {/* Desktop Table View */}
+    <div className="w-full">
+      {/* Desktop Table View - Fixed Responsiveness */}
       <div className="bg-white rounded-lg shadow hidden md:block">
-        <div className="overflow-x-scroll w-full">
-          <table className="w-full">
+        <div className="overflow-x-auto">
+          <table className="min-w-full table-auto">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Booking ID</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Room</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dates</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Guests</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[120px]">
+                  Booking ID
+                </th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[160px]">
+                  Customer
+                </th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[120px]">
+                  Room
+                </th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[140px]">
+                  Dates
+                </th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[80px]">
+                  Guests
+                </th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[100px]">
+                  Status
+                </th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[100px]">
+                  Total
+                </th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[120px]">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {bookings.map((booking) => (
                 <tr key={booking.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-wrap text-sm font-medium text-gray-900">{booking.id}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div>
-                      <div>{booking.customer}</div>
-                      <div className="text-sm text-gray-500">{booking.phone}</div>
+                  <td className="px-3 lg:px-6 py-4 text-sm font-medium text-gray-900">
+                    <div className="max-w-[120px] truncate" title={booking.id}>
+                      {booking.id}
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">Room {booking.room}</div>
-                      <div className="text-sm text-gray-500">{booking.roomType}</div>
+                  <td className="px-3 lg:px-6 py-4">
+                    <div className="max-w-[160px]">
+                      <div className="text-sm font-medium text-gray-900 truncate" title={booking.customer}>
+                        {booking.customer}
+                      </div>
+                      <div className="text-sm text-gray-500 truncate" title={booking.phone}>
+                        {booking.phone}
+                      </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{booking.checkIn}</div>
-                    <div className="text-sm text-gray-500">to {booking.checkOut}</div>
+                  <td className="px-3 lg:px-6 py-4">
+                    <div className="max-w-[120px]">
+                      <div className="text-sm font-medium text-gray-900 truncate">
+                        Room {booking.room}
+                      </div>
+                      <div className="text-sm text-gray-500 truncate" title={booking.roomType}>
+                        {booking.roomType}
+                      </div>
+                    </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{booking.guests}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{getStatusBadge(booking.status.toLowerCase() as "confirmed" | "pending" | "checked_in" | "checked_out" | "cancelled")}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{formatCurrency(booking.total)}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <div className="flex items-center space-x-3">
+                  <td className="px-3 lg:px-6 py-4">
+                    <div className="max-w-[140px]">
+                      <div className="text-sm text-gray-900 truncate">
+                        {new Date(booking.checkIn).toLocaleDateString('en-US', { 
+                          month: 'short', 
+                          day: 'numeric' 
+                        })}
+                      </div>
+                      <div className="text-sm text-gray-500 truncate">
+                        to {new Date(booking.checkOut).toLocaleDateString('en-US', { 
+                          month: 'short', 
+                          day: 'numeric' 
+                        })}
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-3 lg:px-6 py-4 text-sm text-gray-900">
+                    {booking.guests}
+                  </td>
+                  <td className="px-3 lg:px-6 py-4">
+                    {getStatusBadge(booking.status.toLowerCase() as "confirmed" | "pending" | "checked_in" | "checked_out" | "cancelled")}
+                  </td>
+                  <td className="px-3 lg:px-6 py-4 text-sm font-medium text-gray-900">
+                    <div className="max-w-[100px] truncate">
+                      {formatCurrency(booking.total)}
+                    </div>
+                  </td>
+                  <td className="px-3 lg:px-6 py-4">
+                    <div className="flex items-center space-x-2 lg:space-x-3">
                       <button 
                         onClick={() => handleViewBooking(booking)}
-                        className="text-blue-600 hover:text-blue-900 transition-colors cursor-pointer"
+                        className="text-blue-600 hover:text-blue-900 transition-colors cursor-pointer p-1"
                         title="View booking details"
                       >
                         <Eye className="w-4 h-4" />
@@ -311,14 +359,14 @@ export default function BookingsTable() {
                           e.stopPropagation();
                           handleEditBooking(booking);
                         }}
-                        className="text-yellow-600 hover:text-yellow-900 transition-colors cursor-pointer"
+                        className="text-yellow-600 hover:text-yellow-900 transition-colors cursor-pointer p-1"
                         title="Edit booking"
                       >
                         <Edit className="w-4 h-4" />
                       </button>
                       <button 
                         onClick={() => handleDeleteBooking(booking)}
-                        className="text-red-600 hover:text-red-900 cursor-pointer"
+                        className="text-red-600 hover:text-red-900 cursor-pointer p-1"
                         title="Delete booking"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -331,58 +379,87 @@ export default function BookingsTable() {
           </table>
         </div>
         <div className="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
             <div className="text-sm text-gray-700">
               Showing <span className="font-medium">1</span> to <span className="font-medium">{bookings.length}</span> of <span className="font-medium">{bookings.length}</span> results
             </div>
             <div className="flex items-center space-x-2">
-              <button className="px-3 py-1 border border-gray-300 text-gray-500 rounded hover:bg-gray-50">Previous</button>
-              <button className="px-3 py-1 bg-blue-600 text-white rounded">1</button>
-              <button className="px-3 py-1 border border-gray-300 text-gray-500 rounded hover:bg-gray-50">Next</button>
+              <button className="px-3 py-1 border border-gray-300 text-gray-500 rounded hover:bg-gray-50 text-sm">Previous</button>
+              <button className="px-3 py-1 bg-blue-600 text-white rounded text-sm">1</button>
+              <button className="px-3 py-1 border border-gray-300 text-gray-500 rounded hover:bg-gray-50 text-sm">Next</button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile View */}
-      <div className="block sm:hidden space-y-1">
+      {/* Mobile View - Enhanced Responsiveness */}
+      <div className="block md:hidden space-y-3">
         {bookings.map((booking) => (
-          <div key={booking.id} className="border border-gray-200 rounded-lg p-4">
+          <div key={booking.id} className="border border-gray-200 rounded-lg p-4 bg-white shadow-sm">
             <div className="flex items-start justify-between mb-3">
-              <div className="flex-1 min-w-0">
-                <h4 className="font-medium text-gray-900 truncate">{booking.customer}</h4>
-                <p className="text-sm text-gray-600">{booking.phone} • {booking.roomType}</p>
+              <div className="flex-1 min-w-0 pr-3">
+                <h4 className="font-medium text-gray-900 truncate text-base">{booking.customer}</h4>
+                <p className="text-sm text-gray-600 truncate">{booking.phone}</p>
+                <p className="text-sm text-gray-600">Room {booking.room} • {booking.roomType}</p>
               </div>
-              <Badge className={
-                booking.status === "Confirmed"
-                  ? "bg-green-100 text-green-800 hover:bg-green-100"
-                  : "bg-yellow-100 text-yellow-800 hover:bg-yellow-100"
-              }>
-                {booking.status}
-              </Badge>
+              <div className="flex-shrink-0">
+                {getStatusBadge(booking.status.toLowerCase() as "confirmed" | "pending" | "checked_in" | "checked_out" | "cancelled")}
+              </div>
             </div>
-            <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-600">
-                Room: {booking.room} • Guests: {booking.guests}
+            
+            <div className="grid grid-cols-2 gap-3 mb-3 text-sm">
+              <div>
+                <span className="text-gray-500">Check-in:</span>
+                <p className="font-medium text-gray-900">
+                  {new Date(booking.checkIn).toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric',
+                    year: '2-digit'
+                  })}
+                </p>
               </div>
-              <div className="flex items-center space-x-2">
+              <div>
+                <span className="text-gray-500">Check-out:</span>
+                <p className="font-medium text-gray-900">
+                  {new Date(booking.checkOut).toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric',
+                    year: '2-digit'
+                  })}
+                </p>
+              </div>
+              <div>
+                <span className="text-gray-500">Guests:</span>
+                <p className="font-medium text-gray-900">{booking.guests}</p>
+              </div>
+              <div>
+                <span className="text-gray-500">Total:</span>
+                <p className="font-medium text-gray-900">{formatCurrency(booking.total)}</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+              <div className="text-xs text-gray-500 truncate pr-3">
+                ID: {booking.id}
+              </div>
+              <div className="flex items-center space-x-3 flex-shrink-0">
                 <button 
                   onClick={() => handleViewBooking(booking)}
-                  className="text-blue-600 hover:text-blue-900 transition-colors cursor-pointer"
+                  className="text-blue-600 hover:text-blue-900 transition-colors cursor-pointer p-1"
                   title="View booking details"
                 >
                   <Eye className="w-4 h-4" />
                 </button>
                 <button 
                   onClick={() => handleEditBooking(booking)}
-                  className="text-yellow-600 hover:text-yellow-900 cursor-pointer"
+                  className="text-yellow-600 hover:text-yellow-900 cursor-pointer p-1"
                   title="Edit booking"
                 >
                   <Edit className="w-4 h-4" />
                 </button>
                 <button 
                   onClick={() => handleDeleteBooking(booking)}
-                  className="text-red-600 hover:text-red-900 cursor-pointer"
+                  className="text-red-600 hover:text-red-900 cursor-pointer p-1"
                   title="Delete booking"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -391,6 +468,20 @@ export default function BookingsTable() {
             </div>
           </div>
         ))}
+        
+        {/* Mobile Pagination */}
+        <div className="bg-white px-4 py-3 border-t border-gray-200 rounded-lg">
+          <div className="flex flex-col items-center space-y-3">
+            <div className="text-sm text-gray-700 text-center">
+              Showing <span className="font-medium">1</span> to <span className="font-medium">{bookings.length}</span> of <span className="font-medium">{bookings.length}</span> results
+            </div>
+            <div className="flex items-center space-x-2">
+              <button className="px-3 py-1 border border-gray-300 text-gray-500 rounded hover:bg-gray-50 text-sm">Previous</button>
+              <button className="px-3 py-1 bg-blue-600 text-white rounded text-sm">1</button>
+              <button className="px-3 py-1 border border-gray-300 text-gray-500 rounded hover:bg-gray-50 text-sm">Next</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Booking Details Modal */}
@@ -531,10 +622,6 @@ export default function BookingsTable() {
               >
                 Close
               </button>
-              {/* <button className="px-4 py-2 text-sm font-medium text-white bg-yellow-600 border border-transparent rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors">
-                <Edit className="w-4 h-4 inline mr-1" />
-                Edit Booking
-              </button> */}
               <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
                 Print Details
               </button>

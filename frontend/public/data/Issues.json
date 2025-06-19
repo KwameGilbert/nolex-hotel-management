@@ -1,0 +1,8 @@
+{
+  "title": "Example Issue Title",
+  "location": "Lobby Area",
+  "description": "The main lights in the lobby are flickering intermittently, especially in the evenings.",
+  "priority": "Medium",
+  "status": "pending",
+  "createdAt": "2024-06-19T16:30:00.000Z"
+}

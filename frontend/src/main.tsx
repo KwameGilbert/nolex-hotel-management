@@ -56,7 +56,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="bookings" element={<Bookings />} />
         <Route path="room-availability" element={<RoomAvailability />} />
         <Route path="customers" element={<Customer />} />
-        <Route path="make-reports" element={<ReportIssueForm />} />
+        <Route path="make-reports" element={<Issues />} />
       </Route>
 
       {/* Protected CEO Routes */}

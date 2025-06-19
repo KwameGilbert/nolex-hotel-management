@@ -28,8 +28,7 @@ export default function Settings() {
     name: "",
     email: "",
     phone: "",
-    password: "",
-    role: ""
+    password: ""
   });
 
   // Handle form input changes for general settings
@@ -94,7 +93,7 @@ export default function Settings() {
         email: profileSettings.email,
         phone: profileSettings.phone,
         password: profileSettings.password,
-        role: profileSettings.role,
+        // role: profileSettings.role,
         is_active: 1
       };
 
@@ -380,22 +379,6 @@ export default function Settings() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       required
                     />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Role
-                    </label>
-                    <select
-                      name="role"
-                      value={profileSettings.role}
-                      onChange={handleProfileChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    >
-                      <option value="">Select Role</option>
-                      <option value="receptionist">Receptionist</option>
-                      <option value="manager">Manager</option>
-                    </select>
                   </div>
                 </div>
 

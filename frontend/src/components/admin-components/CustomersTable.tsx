@@ -210,62 +210,83 @@ const handleConfirmDelete = async () => {
   }
 
   return (
-    <div>
-      {/* Desktop Table */}
+    <div className="w-full">
+      {/* Desktop Table - Fixed Responsiveness */}
       <div className="bg-white rounded-lg shadow overflow-hidden hidden md:block">
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="min-w-full table-auto">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Customer Name</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Contact</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Address</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Emergency Contact</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Bookings</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase min-w-[180px]">Customer Name</th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase min-w-[200px]">Contact</th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase min-w-[160px]">Address</th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase min-w-[140px]">Emergency Contact</th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase min-w-[100px]">Bookings</th>
+                <th className="px-3 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase min-w-[120px]">Actions</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {customers.map((customer) => (
                 <tr key={customer.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
-                    <div className="text-sm font-medium text-gray-900">{customer.name}</div>
-                    <div className="text-sm text-gray-500">{customer.id}</div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="space-y-1">
-                      <div className="flex items-center text-sm font-medium text-gray-900">
-                        <Phone className="w-3 h-3 mr-1" />
-                        {customer.phone}
+                  <td className="px-3 lg:px-6 py-4">
+                    <div className="max-w-[180px]">
+                      <div className="text-sm font-medium text-gray-900 truncate" title={customer.name}>
+                        {customer.name}
                       </div>
-                      <div className="flex items-center text-sm text-gray-500">
-                        <Mail className="w-3 h-3 mr-1" />
-                        {customer.email}
+                      <div className="text-sm text-gray-500 truncate font-mono text-xs" title={customer.id}>
+                        {customer.id}
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">{customer.address}</td>
-                  <td className="px-6 py-4 text-sm text-gray-900">{customer.emergencyContact}</td>
-                  <td className="px-6 py-4 text-sm text-gray-900">{customer.totalBookings}</td>
-                  <td className="px-6 py-4 text-sm">
-                    <div className="flex items-center space-x-3">
+                  <td className="px-3 lg:px-6 py-4">
+                    <div className="max-w-[200px] space-y-1">
+                      <div className="flex items-center text-sm font-medium text-gray-900">
+                        <Phone className="w-3 h-3 mr-1 flex-shrink-0" />
+                        <span className="truncate" title={customer.phone}>{customer.phone}</span>
+                      </div>
+                      <div className="flex items-center text-sm text-gray-500">
+                        <Mail className="w-3 h-3 mr-1 flex-shrink-0" />
+                        <span className="truncate" title={customer.email}>{customer.email}</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-3 lg:px-6 py-4">
+                    <div className="text-sm text-gray-900 max-w-[160px] truncate" title={customer.address}>
+                      {customer.address}
+                    </div>
+                  </td>
+                  <td className="px-3 lg:px-6 py-4">
+                    <div className="text-sm text-gray-900 max-w-[140px] truncate" title={customer.emergencyContact}>
+                      {customer.emergencyContact}
+                    </div>
+                  </td>
+                  <td className="px-3 lg:px-6 py-4">
+                    <div className="text-center">
+                      <div className="text-sm font-medium text-gray-900">{customer.totalBookings}</div>
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getBookingStatusColor(customer.totalBookings)}`}>
+                        {getBookingStatusText(customer.totalBookings)}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="px-3 lg:px-6 py-4">
+                    <div className="flex items-center space-x-2 lg:space-x-3">
                       <button 
                         onClick={() => handleViewCustomer(customer)}
-                        className="text-blue-600 hover:text-blue-900 transition-colors cursor-pointer"
+                        className="text-blue-600 hover:text-blue-900 transition-colors cursor-pointer p-1"
                         title="View customer details"
                       >
                         <Eye className="w-4 h-4" />
                       </button>
                       <button 
                         onClick={() => handleEditCustomer(customer)}
-                        className="text-yellow-600 hover:text-yellow-900 cursor-pointer"
+                        className="text-yellow-600 hover:text-yellow-900 cursor-pointer p-1"
                         title="Edit customer"
                       >
                         <Edit className="w-4 h-4" />
                       </button>
                       <button 
                         onClick={() => handleDeleteCustomer(customer)}
-                        className="text-red-600 hover:text-red-900 cursor-pointer"
+                        className="text-red-600 hover:text-red-900 cursor-pointer p-1"
                         title="Delete customer"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -277,44 +298,102 @@ const handleConfirmDelete = async () => {
             </tbody>
           </table>
         </div>
-      </div>
-
-      {/* Mobile View */}
-      <div className="block md:hidden space-y-2 mt-4">
-        {customers.map((customer) => (
-          <div key={customer.id} className="border border-gray-200 rounded-lg p-4 shadow-sm">
-            <div className="mb-2">
-              <h4 className="font-medium text-gray-900">{customer.name}</h4>
-              <p className="text-sm text-gray-600">{customer.phone} • {customer.address}</p>
-            </div>
-            <div className="text-sm text-gray-600 mb-2">
-              Bookings: {customer.totalBookings} • Emergency: {customer.emergencyContact}
+        
+        {/* Desktop Pagination */}
+        <div className="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
+            <div className="text-sm text-gray-700">
+              Showing <span className="font-medium">1</span> to <span className="font-medium">{customers.length}</span> of <span className="font-medium">{customers.length}</span> results
             </div>
             <div className="flex items-center space-x-2">
-              <button 
-                onClick={() => handleViewCustomer(customer)}
-                className="text-blue-600 hover:text-blue-900 transition-colors"
-                title="View customer details"
-              >
-                <Eye className="w-4 h-4" />
-              </button>
-              <button 
-                onClick={() => handleEditCustomer(customer)}
-                className="text-yellow-600 hover:text-yellow-900 cursor-pointer"
-                title="Edit customer"
-              >
-                <Edit className="w-4 h-4" />
-              </button>
-              <button 
-                onClick={() => handleDeleteCustomer(customer)}
-                className="text-red-600 hover:text-red-900"
-                title="Delete customer"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
+              <button className="px-3 py-1 border border-gray-300 text-gray-500 rounded hover:bg-gray-50 text-sm">Previous</button>
+              <button className="px-3 py-1 bg-blue-600 text-white rounded text-sm">1</button>
+              <button className="px-3 py-1 border border-gray-300 text-gray-500 rounded hover:bg-gray-50 text-sm">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile View - Enhanced Responsiveness */}
+      <div className="block md:hidden space-y-3">
+        {customers.map((customer) => (
+          <div key={customer.id} className="border border-gray-200 rounded-lg p-4 bg-white shadow-sm">
+            <div className="flex items-start justify-between mb-3">
+              <div className="flex-1 min-w-0 pr-3">
+                <h4 className="font-medium text-gray-900 truncate text-base">{customer.name}</h4>
+                <p className="text-sm text-gray-600 truncate">{customer.phone}</p>
+                <p className="text-sm text-gray-600 truncate">{customer.email}</p>
+              </div>
+              <div className="flex-shrink-0">
+                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getBookingStatusColor(customer.totalBookings)}`}>
+                  {getBookingStatusText(customer.totalBookings)}
+                </span>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-3 mb-3 text-sm">
+              <div>
+                <span className="text-gray-500">Address:</span>
+                <p className="font-medium text-gray-900 truncate" title={customer.address}>
+                  {customer.address}
+                </p>
+              </div>
+              <div>
+                <span className="text-gray-500">Emergency Contact:</span>
+                <p className="font-medium text-gray-900 truncate" title={customer.emergencyContact}>
+                  {customer.emergencyContact}
+                </p>
+              </div>
+              <div>
+                <span className="text-gray-500">Total Bookings:</span>
+                <p className="font-medium text-gray-900">{customer.totalBookings}</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+              <div className="text-xs text-gray-500 truncate pr-3 font-mono">
+                ID: {customer.id}
+              </div>
+              <div className="flex items-center space-x-3 flex-shrink-0">
+                <button 
+                  onClick={() => handleViewCustomer(customer)}
+                  className="text-blue-600 hover:text-blue-900 transition-colors p-1"
+                  title="View customer details"
+                >
+                  <Eye className="w-4 h-4" />
+                </button>
+                <button 
+                  onClick={() => handleEditCustomer(customer)}
+                  className="text-yellow-600 hover:text-yellow-900 cursor-pointer p-1"
+                  title="Edit customer"
+                >
+                  <Edit className="w-4 h-4" />
+                </button>
+                <button 
+                  onClick={() => handleDeleteCustomer(customer)}
+                  className="text-red-600 hover:text-red-900 p-1"
+                  title="Delete customer"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
         ))}
+        
+        {/* Mobile Pagination */}
+        <div className="bg-white px-4 py-3 border-t border-gray-200 rounded-lg">
+          <div className="flex flex-col items-center space-y-3">
+            <div className="text-sm text-gray-700 text-center">
+              Showing <span className="font-medium">1</span> to <span className="font-medium">{customers.length}</span> of <span className="font-medium">{customers.length}</span> results
+            </div>
+            <div className="flex items-center space-x-2">
+              <button className="px-3 py-1 border border-gray-300 text-gray-500 rounded hover:bg-gray-50 text-sm">Previous</button>
+              <button className="px-3 py-1 bg-blue-600 text-white rounded text-sm">1</button>
+              <button className="px-3 py-1 border border-gray-300 text-gray-500 rounded hover:bg-gray-50 text-sm">Next</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Customer Details Modal */}
@@ -447,16 +526,12 @@ const handleConfirmDelete = async () => {
 
             {/* Modal Footer */}
             <div className="flex items-center justify-end space-x-3 p-6 border-t border-gray-200 bg-gray-50">
-                           <button
+              <button
                 onClick={closeModal}
                 className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
               >
                 Close
               </button>
-              {/* <button className="px-4 py-2 text-sm font-medium text-white bg-yellow-600 border border-transparent rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors">
-                <Edit className="w-4 h-4 inline mr-1" />
-                Edit Customer
-              </button> */}
               <button className="px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors">
                 View Bookings
               </button>
