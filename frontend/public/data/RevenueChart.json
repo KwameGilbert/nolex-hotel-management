@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "month": "Jan",
+      "revenue": 2400000,
+      "target": 2200000
+    },
+    {
+      "month": "Feb",
+      "revenue": 2100000,
+      "target": 2300000
+    },
+    {
+      "month": "Mar",
+      "revenue": 2800000,
+      "target": 2400000
+    },
+    {
+      "month": "Apr",
+      "revenue": 2600000,
+      "target": 2500000
+    },
+    {
+      "month": "May",
+      "revenue": 2900000,
+      "target": 2600000
+    },
+    {
+      "month": "Jun",
+      "revenue": 2847392,
+      "target": 2700000
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "issues": [
+    {
+      "title": "Issue 1",
+      "location": "Location 1",
+      "status": "Rejected",
+      "priority": "Low",
+      "createdAt": "2023-01-01"
+    },
+    {
+      "title": "Issue 2",
+      "location": "Location 2",
+      "status": "inProgress",
+      "priority": "Medium",
+      "createdAt": "2023-01-02"
+    },
+    {
+      "title": "Issue 3",
+      "location": "Location 3",
+      "status": "Resolved",
+      "priority": "High",
+      "createdAt": "2023-01-03"
+    },
+    {
+      "title": "Issue 4",
+      "location": "Location 4",
+      "status": "underreview",
+      "priority": "Low",
+      "createdAt": "2023-01-04"
+    },
+    {
+      "title": "Issue 5",
+      "location": "Location 5",
+      "status": "Rejected",
+      "priority": "Medium",
+      "createdAt": "2023-01-05"
+    }
+  ]
+}
