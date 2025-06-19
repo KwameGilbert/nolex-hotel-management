@@ -24,6 +24,7 @@
     "react-toastify": "^11.0.5",
     "recharts": "^2.15.3",
     "sweetalert2": "^11.22.0",
+    "swiper": "^11.2.8",
     "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.1.8",
     "toastify-js": "^1.12.0"

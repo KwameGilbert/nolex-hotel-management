@@ -25,11 +25,19 @@ import NotFoundPage from './pages/404.tsx'
 import CeoMainLayout from './components/layout/ceo/CeoMainLayout.tsx'
 import CeoDashbord from './pages/super-admin/Dashbord.tsx'
 import CeoRevenue from './pages/super-admin/CeoRevenue.tsx'
+import Home from './pages/mainpage/Home.tsx'
+
+
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Routes>
-      <Route path='/' element={<Login/>}/>
+      {/* Public Routes */}
+      <Route path="/" element={<Home/>}/>
+
+
+
+      <Route path='/login' element={<Login/>}/>
       <Route path='/otp' element={<OTP />} />
 
       {/* Protected Admin Routes */}
@@ -70,7 +78,7 @@ createRoot(document.getElementById("root")!).render(
       </Route>
 
       {/* 404 catch-all route - must be LAST in the Routes list */}
-      <Route index element={<NotFoundPage />} />
+      <Route path="/page-not-found" element={<NotFoundPage />} />
     </Routes>
   </BrowserRouter>
 );
