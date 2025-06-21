@@ -1,15 +1,27 @@
-import { Globe, User2Icon, Upload } from "lucide-react";
+import { Upload } from "lucide-react";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 
+// Define the tabs for the sidebar
+const tabs: { id: string; label: string; icon: React.ElementType }[] = [
+  {
+    id: "general",
+    label: "General",
+    icon: Upload, // You can use a more appropriate icon if available
+  },
+  {
+    id: "profile",
+    label: "Profile",
+    icon: Upload, // You can use a more appropriate icon if available
+  },
+];
+
 export default function Settings() {
   const [activeTab, setActiveTab] = useState("general");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  //  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
-  //  console.log(userData);
+  const [passwordError, setPasswordError] = useState("");
   
-
   // General settings state
   const [generalSettings, setGeneralSettings] = useState({
     name: "",
@@ -28,8 +40,22 @@ export default function Settings() {
     name: "",
     email: "",
     phone: "",
-    password: ""
+    password: "",
+    confirmPassword: ""
   });
+
+  // Validate passwords match
+  const validatePasswords = () => {
+    if (profileSettings.password !== profileSettings.confirmPassword) {
+      setPasswordError("Passwords do not match");
+      return false;
+    }
+    if (profileSettings.password.length < 6) {
+      setPasswordError("Password must be at least 6 characters");
+      return false;
+    }
+    return true;
+  };
 
   // Handle form input changes for general settings
   const handleGeneralChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -41,6 +67,11 @@ export default function Settings() {
   const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setProfileSettings(prev => ({ ...prev, [name]: value }));
+    
+    // Clear password error when user starts typing
+    if (name === "password" || name === "confirmPassword") {
+      setPasswordError("");
+    }
   };
 
   // API function for general settings using axios
@@ -51,7 +82,8 @@ export default function Settings() {
       const userData = JSON.parse(localStorage.getItem("userData") || "{}");
       const API_URL = `https://hotel-management-system-5gk8.onrender.com/v1/hotels/${userData.user.hotel_id}`;
 
-      const response = await axios.patch(API_URL, generalSettings);
+
+      await axios.patch(API_URL, generalSettings);
 
       Swal.fire({
         title: "Success!",
@@ -60,7 +92,7 @@ export default function Settings() {
         timer: 3000,
         timerProgressBar: true
       });
-      console.log("Settings saved:", response.data);
+
     } catch (error) {
       console.error("Error saving general settings:", error);
       Swal.fire({
@@ -77,6 +109,11 @@ export default function Settings() {
 
   // API function for profile settings
   const saveProfileSettings = async () => {
+    // Validate passwords before submitting
+    if (!validatePasswords()) {
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const userData = JSON.parse(localStorage.getItem("userData") || "{}");
@@ -84,7 +121,7 @@ export default function Settings() {
       const branch_id = userData.user.branch_id || null;
       const user_id = userData.user.id;
 
-      // Prepare payload
+      // Prepare payload (exclude confirmPassword)
       const payload = {
         hotel_id,
         branch_id,
@@ -93,14 +130,14 @@ export default function Settings() {
         email: profileSettings.email,
         phone: profileSettings.phone,
         password: profileSettings.password,
-        // role: profileSettings.role,
         is_active: 1
       };
 
       // Placeholder API URL
       const API_URL =  `https://hotel-management-system-5gk8.onrender.com/v1/users/${user_id}`; // Change this to your real API
 
-      const response = await axios.patch(API_URL, payload);
+
+      await axios.patch(API_URL, payload);
 
       Swal.fire({
         title: "Success!",
@@ -286,124 +323,137 @@ export default function Settings() {
                   </div>
                 </div>
                 
-                <div className="flex items-center justify-end py-4">
-                  <button 
-                    type="button" 
-                    onClick={saveGeneralSettings}
-                    disabled={isSubmitting}
-                    className={`px-4 py-2 text-white text-sm font-medium rounded-sm cursor-pointer transition-colors ${
-                      isSubmitting ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"
-                    }`}
-                  >
-                    {isSubmitting ? "Saving..." : "Save Changes"}
-                  </button>
-                </div>
-              </form>
-            </div>
-          )}
-
-          {activeTab === "profile" && (
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800">
-                Your Profile
-              </h3>
-
-              <form onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Username
-                    </label>
-                    <input
-                      type="text"
-                      name="username"
-                      value={profileSettings.username}
-                      onChange={handleProfileChange}
-                      placeholder="Enter your username"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
+                              <div className="flex items-center justify-end py-4">
+                                <button 
+                                  type="button" 
+                                  onClick={saveGeneralSettings}
+                                  disabled={isSubmitting}
+                                  className={`px-4 py-2 text-white text-sm font-medium rounded-sm cursor-pointer transition-colors ${
+                                    isSubmitting ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"
+                                  }`}
+                                >
+                                  {isSubmitting ? "Saving..." : "Save Changes"}
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        )}
+              
+                        {activeTab === "profile" && (
+                          <div className="space-y-4">
+                            <h3 className="text-lg font-semibold text-gray-800">
+                              Profile Settings
+                            </h3>
+                            <form onSubmit={(e) => { e.preventDefault(); saveProfileSettings(); }}>
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Username
+                                  </label>
+                                  <input
+                                    type="text"
+                                    name="username"
+                                    value={profileSettings.username}
+                                    onChange={handleProfileChange}
+                                    placeholder="Enter your username"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    required
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Full Name
+                                  </label>
+                                  <input
+                                    type="text"
+                                    name="name"
+                                    value={profileSettings.name}
+                                    onChange={handleProfileChange}
+                                    placeholder="Enter your full name"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    required
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Email
+                                  </label>
+                                  <input
+                                    type="email"
+                                    name="email"
+                                    value={profileSettings.email}
+                                    onChange={handleProfileChange}
+                                    placeholder="Enter your email"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    required
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Phone Number
+                                  </label>
+                                  <input
+                                    type="tel"
+                                    name="phone"
+                                    value={profileSettings.phone}
+                                    onChange={handleProfileChange}
+                                    placeholder="Enter your phone number"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    required
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Password
+                                  </label>
+                                  <input
+                                    type="password"
+                                    name="password"
+                                    value={profileSettings.password}
+                                    onChange={handleProfileChange}
+                                    placeholder="Enter your password"
+                                    className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                                      passwordError ? "border-red-500" : "border-gray-300"
+                                    }`}
+                                    required
+                                  />
+                                </div>
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Confirm Password
+                                  </label>
+                                  <input
+                                    type="password"
+                                    name="confirmPassword"
+                                    value={profileSettings.confirmPassword}
+                                    onChange={handleProfileChange}
+                                    placeholder="Confirm your password"
+                                    className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                                      passwordError ? "border-red-500" : "border-gray-300"
+                                    }`}
+                                    required
+                                  />
+                                  {passwordError && (
+                                    <p className="text-red-500 text-xs mt-1">{passwordError}</p>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="flex items-center justify-end py-4">
+                                <button
+                                  type="submit"
+                                  disabled={isSubmitting}
+                                  className={`px-4 py-2 text-white text-sm font-medium rounded-sm cursor-pointer transition-colors ${
+                                    isSubmitting ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"
+                                  }`}
+                                >
+                                  {isSubmitting ? "Saving..." : "Save Changes"}
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        )}
+                      </div>
+                    </main>
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={profileSettings.name}
-                      onChange={handleProfileChange}
-                      placeholder="Enter your full name"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={profileSettings.email}
-                      onChange={handleProfileChange}
-                      placeholder="Enter your email"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={profileSettings.phone}
-                      onChange={handleProfileChange}
-                      placeholder="Enter your phone number"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      value={profileSettings.password}
-                      onChange={handleProfileChange}
-                      placeholder="Enter your password"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-end py-4">
-                  <button
-                    type="button"
-                    onClick={saveProfileSettings}
-                    disabled={isSubmitting}
-                    className={`bg-blue-600 px-4 py-2 text-white text-sm font-medium rounded-sm cursor-pointer hover:bg-blue-700 transition-colors ${
-                      isSubmitting ? "opacity-60 cursor-not-allowed" : ""
-                    }`}
-                  >
-                    {isSubmitting ? "Saving..." : "Save Profile"}
-                  </button>
-                </div>
-              </form>
-            </div>
-          )}
-        </div>
-      </main>
-    </div>
-  );
-}
-
-const tabs = [
-  { id: "general", label: "General", icon: Globe },
-  { id: "profile", label: "Profile", icon: User2Icon }
-];
+                );
+              }

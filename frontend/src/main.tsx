@@ -41,7 +41,7 @@ createRoot(document.getElementById("root")!).render(
       <Route path='/otp' element={<OTP />} />
 
       {/* Protected Admin Routes */}
-      <Route path="/admin" element={<ProtectedRoute><MainLayout /></ProtectedRoute>}>
+      <Route path="/admin" element={<MainLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="new-booking" element={<NewBooking />} />
         <Route path="bookings" element={<Bookings />} />
@@ -58,7 +58,7 @@ createRoot(document.getElementById("root")!).render(
       </Route>
 
       {/* Protected Receptionist Routes */}
-      <Route path="/receptionist" element={<ProtectedRoute><RecepMainLayout /></ProtectedRoute>}>
+      <Route path="/receptionist" element={<RecepMainLayout />}>
         <Route index element={<RecepDashboard />} />
         <Route path="new-booking" element={<NewBooking />} />
         <Route path="bookings" element={<Bookings />} />
