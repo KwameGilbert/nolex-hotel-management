@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
@@ -22,21 +23,21 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-[#C9A55C]">
+            <Link to='/' className="text-gray-700 hover:text-[#C9A55C]">
               Home
-            </a>
-            <a href="#" className="text-gray-700 hover:text-[#C9A55C]">
+            </Link>
+            <Link  to="/rooms" className="text-gray-700 hover:text-[#C9A55C]">
               Rooms
-            </a>
-            <a href="#" className="text-gray-700 hover:text-[#C9A55C]">
+            </Link>
+            <Link  to="/service" className="text-gray-700 hover:text-[#C9A55C]">
               Services
-            </a>
-            <a href="#" className="text-gray-700 hover:text-[#C9A55C]">
+            </Link>
+            <Link  to="/" className="text-gray-700 hover:text-[#C9A55C]">
               About
-            </a>
-            <a href="#" className="text-gray-700 hover:text-[#C9A55C]">
+            </Link>
+            <Link  to="/" className="text-gray-700 hover:text-[#C9A55C]">
               Contact
-            </a>
+            </Link>
           </div>
 
           {/* sign in and book now buttons */}
