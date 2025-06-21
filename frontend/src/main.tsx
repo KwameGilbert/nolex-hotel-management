@@ -26,6 +26,8 @@ import CeoMainLayout from './components/layout/ceo/CeoMainLayout.tsx'
 import CeoDashbord from './pages/super-admin/Dashbord.tsx'
 import CeoRevenue from './pages/super-admin/CeoRevenue.tsx'
 import Home from './pages/mainpage/Home.tsx'
+import Service from './pages/mainpage/Service.tsx'
+import Rooms from './pages/mainpage/Rooms.tsx'
 
 
 
@@ -34,6 +36,8 @@ createRoot(document.getElementById("root")!).render(
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<Home/>}/>
+      <Route path='/service' element={<Service/>}/>
+      <Route path='/rooms' element={<Rooms/>}/>
 
 
 

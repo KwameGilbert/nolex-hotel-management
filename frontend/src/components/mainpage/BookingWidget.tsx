@@ -33,7 +33,7 @@ const BookingWidget = () => {
     <div>
      {/* Booking Widget */}
       <section className="relative z-20 px-4">
-        <div className="max-w-5xl mx-auto -mt-40 bg-white shadow-xl p-8">
+        <div className="max-w-5xl mx-auto -mt-32 bg-white shadow-xl p-8">
           <h2 className="text-2xl font-serif text-[#1A365D] mb-6 text-center">
             Book Your Stay
           </h2>
