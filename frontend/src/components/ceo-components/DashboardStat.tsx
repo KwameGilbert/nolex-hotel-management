@@ -40,7 +40,7 @@ const iconMap: Record<string, JSX.Element> = {
 }
 
 const borderColorMap: Record<string, string> = {
-  "Total Revenue": "border-t-4 border-blue-600",
+  "Today Revenue": "border-t-4 border-blue-600",
   "Total Branches": "border-t-4 border-green-600",
   "Total Customers": "border-t-4 border-yellow-500",
   "Total Employees": "border-t-4 border-purple-600",

@@ -32,10 +32,10 @@ export default function Navbar() {
             <Link  to="/service" className="text-gray-700 hover:text-[#C9A55C]">
               Services
             </Link>
-            <Link  to="/" className="text-gray-700 hover:text-[#C9A55C]">
+            <Link  to="/about" className="text-gray-700 hover:text-[#C9A55C]">
               About
             </Link>
-            <Link  to="/" className="text-gray-700 hover:text-[#C9A55C]">
+            <Link  to="/contact" className="text-gray-700 hover:text-[#C9A55C]">
               Contact
             </Link>
           </div>
