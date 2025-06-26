@@ -23,8 +23,8 @@ const Service = () => {
           <Award size={16} className="mr-2" />
           Premium Services & Amenities
         </div>
-        <h1 className="text-4xl md:text-6xl font-bold text-white">Exceptional</h1>
-        <h1 className="text-4xl md:text-6xl font-bold text-[#C9A55C]">Experiences</h1>
+        <h1 className="text-4xl md:text-6xl font-bold text-white font-serif">Exceptional</h1>
+        <h1 className="text-4xl md:text-6xl font-bold text-[#C9A55C] font-serif">Experiences</h1>
         <p className="text-gray-200 text-sm text-center md:text-lg mt-4">
           Discover our world-class services and amenities designed to make your
           stay unforgettable

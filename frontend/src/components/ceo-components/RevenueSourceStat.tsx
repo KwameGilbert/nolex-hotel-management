@@ -85,7 +85,7 @@ const RevenueSourceStat = () => {
                 {item.name}
               </div>
               <span className="font-medium">
-                ${(item.amount / 1000000).toFixed(1)}M
+                ${(item.amount / 10000).toFixed(1)}M
               </span>
             </div>
           ))}

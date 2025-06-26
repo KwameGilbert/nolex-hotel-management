@@ -1,28 +1,40 @@
 {
   "revenueBySource": [
     {
-      "name": "Room Revenue",
-      "value": 68,
-      "amount": 28800000,
+      "name": "Deluxe Room",
+      "value": 8,
+      "amount": 28800,
       "color": "#339af0"
     },
     {
-      "name": "Food & Beverage",
+      "name": "Standard Room",
       "value": 22,
-      "amount": 9300000,
+      "amount": 93000,
       "color": "#845ef7"
     },
     {
-      "name": "Events & Conferences",
+      "name": "Executive Suite",
       "value": 7,
-      "amount": 2900000,
+      "amount": 29000,
       "color": "#51cf66"
     },
     {
-      "name": "Other Services",
+      "name": "Presidential Suite",
       "value": 3,
-      "amount": 1200000,
+      "amount": 120000,
       "color": "#ff922b"
+    },
+    {
+      "name": "Family Room",
+      "value": 8,
+      "amount": 32000,
+      "color": "#f06595"
+    },
+    {
+      "name": "Single Room",
+      "value": 7,
+      "amount": 28000,
+      "color": "#fcc419"
     }
   ]
 }

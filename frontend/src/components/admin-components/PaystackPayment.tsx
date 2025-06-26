@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { usePaystackPayment } from 'react-paystack';
+// import { usePaystackPayment } from 'react-paystack';
 import { CreditCard, CheckCircle } from 'lucide-react';
 
 interface PaystackPaymentProps {

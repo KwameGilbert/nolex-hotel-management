@@ -23,11 +23,15 @@ import RoomType from './pages/admin/RoomType.tsx'
 import PayBooking from './pages/admin/PayBooking.tsx'
 import NotFoundPage from './pages/404.tsx'
 import CeoMainLayout from './components/layout/ceo/CeoMainLayout.tsx'
-import CeoDashbord from './pages/super-admin/Dashbord.tsx'
-import CeoRevenue from './pages/super-admin/CeoRevenue.tsx'
+import CeoDashbord from './pages/ceo/Dashbord.tsx'
+import CeoRevenue from './pages/ceo/CeoRevenue.tsx'
 import Home from './pages/mainpage/Home.tsx'
 import Service from './pages/mainpage/Service.tsx'
 import Rooms from './pages/mainpage/Rooms.tsx'
+import About from './pages/mainpage/About.tsx'
+import Contact from './pages/mainpage/Contact.tsx'
+import SuperAdminMainLayout from './components/layout/super-admin/MainLayout.tsx'
+import SuperAdmin from './pages/super-admin/Dashboard.tsx'
 
 
 
@@ -38,6 +42,8 @@ createRoot(document.getElementById("root")!).render(
       <Route path="/" element={<Home/>}/>
       <Route path='/service' element={<Service/>}/>
       <Route path='/rooms' element={<Rooms/>}/>
+      <Route path='/about' element={<About/>}/>
+      <Route path='/contact' element={<Contact/>}/>
 
 
 
@@ -79,6 +85,10 @@ createRoot(document.getElementById("root")!).render(
         <Route path="settings" element={<Settings />} />
         <Route path="issues" element={<Issues />} />
         <Route path="customers" element={<Customer />} />
+      </Route>
+
+      <Route path="/super-admin" element={<SuperAdminMainLayout/>}>
+        <Route index element={<SuperAdmin/>}/>
       </Route>
 
       {/* 404 catch-all route - must be LAST in the Routes list */}

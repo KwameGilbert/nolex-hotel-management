@@ -39,10 +39,10 @@ const iconMap: Record<string, JSX.Element> ={
 }
 
 const borderColorMap: Record<string, string> ={
-  "Total Revenue" : "border-t-4 border-blue-600",
+  "Today's Revenue" : "border-t-4 border-blue-600",
   "Average Revenue": "border-t-4 border-green-600",
-  "F&B Revenue": "border-t-4 border-amber-500",
-  "Events Revenue": "border-t-4 border-purple-600"
+  "Total Revenue": "border-t-4 border-amber-500",
+  "Weekly Booking Revenue": "border-t-4 border-purple-600"
 }
 const RevenueStat = () => {
   const [stats, setStats] = useState<RevenueStat[]>([])

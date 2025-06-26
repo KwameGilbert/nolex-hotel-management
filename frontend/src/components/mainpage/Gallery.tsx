@@ -15,9 +15,9 @@ const Gallery = () => {
         </div>
 
         <div className="flex justify-center mb-8 max-w-6xl mx-auto">
-          <div className="">
-            <Tabs defaultValue="account" className="">
-              <TabsList className="w-[400px] mx-auto inline-flex bg-[#F5F5F5] p-1 rounded-sm h-12 mb-4">
+          <div className="px-4">
+            <Tabs defaultValue="all" className="">
+              <TabsList className="max-w-5xl md:max-w-6xl mx-auto inline-flex bg-[#F5F5F5] p-1 rounded-sm h-12 mb-4">
                 <TabsTrigger value="all">All</TabsTrigger>
                 <TabsTrigger value="rooms">Rooms</TabsTrigger>
                 <TabsTrigger value="dining">Dining</TabsTrigger>
