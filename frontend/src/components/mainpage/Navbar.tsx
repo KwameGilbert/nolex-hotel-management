@@ -42,12 +42,12 @@ export default function Navbar() {
 
           {/* sign in and book now buttons */}
           <div className="hidden md:flex items-center gap-6">
-            <a
-              href="/signin"
+            <Link
+              to="/user-login"
               className="text-gray-700 hover:text-[#C9A55C] border border-gray-300 px-4 py-2 rounded-md transition"
             >
               Sign In
-            </a>
+            </Link>
             <a
               href="/book"
               className="bg-[#C9A55C] text-white px-4 py-2 rounded-md hover:bg-[#C9A55C] transition"
@@ -93,12 +93,12 @@ export default function Navbar() {
           <a href="#" className="text-gray-700 hover:text-[#C9A55C]">
             Contact
           </a>
-          <a
-            href="/signin"
+          <Link
+            to="/user-login"
             className="text-center text-gray-700 border border-gray-300 px-4 py-2 rounded-md hover:text-blue-600"
           >
             Sign In
-          </a>
+          </Link>
           <a
             href="/book"
             className="text-center bg-[#C9A55C] text-white px-4 py-2 rounded-md hover:bg-[#C9A55C] transition"
