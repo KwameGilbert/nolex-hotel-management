@@ -11,6 +11,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   // Forgot password modal states
   const [forgotPasswordState, setForgotPasswordState] = useState({
@@ -456,13 +457,21 @@ export default function Login() {
                       <Lock className="h-[18px] w-[18px] text-gray-400" />
                     </span>
                     <input
-                      type="password"
-                      className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-1  placeholder-gray-400 text-sm"
+                      type={showPassword ? "text" : "password"}
+                      className="w-full pl-12 pr-12 py-3 rounded-xl border border-gray-300 focus:ring-1  placeholder-gray-400 text-sm"
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
                     />
+                    <button
+                      type="button"
+                      className="absolute right-4 flex items-center h-full text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                      onClick={() => setShowPassword(!showPassword)}
+                      tabIndex={-1}
+                    >
+                      {showPassword ? <EyeOff className="h-[18px] w-[18px]" /> : <Eye className="h-[18px] w-[18px]" />}
+                    </button>
                   </div>
                   <div className="flex justify-end mt-2">
                     <button
