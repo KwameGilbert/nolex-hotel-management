@@ -1,0 +1,24 @@
+{
+  "reports": [
+    {
+      "id": "RPT001",
+      "hotelName": "Royal Sun Hotel",
+      "ceoName": "Kwame Appiah",
+      "title": "Monthly Revenue Inconsistency",
+      "category": "Financial",
+      "status": "Pending",
+      "date": "2025-06-25",
+      "content": "Revenue figures in the dashboard do not match our internal calculations. Please verify integration."
+    },
+    {
+      "id": "RPT002",
+      "hotelName": "Ocean View Resort",
+      "ceoName": "Abena Osei",
+      "title": "Receptionist UI Bug",
+      "category": "Operational",
+      "status": "Reviewed",
+      "date": "2025-06-26",
+      "content": "Receptionists report that the check-in form sometimes does not save guest information correctly."
+    }
+  ]
+}

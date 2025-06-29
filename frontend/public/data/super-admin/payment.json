@@ -1,0 +1,50 @@
+[
+  {
+    "id": "pmt001",
+    "hotelName": "Royal Grand Hotel",
+    "ceoName": "Kwame Mensah",
+    "email": "kwame@royalgrand.com",
+    "plan": "Premium",
+    "amount": 2500,
+    "method": "Card",
+    "transactionId": "TXN845201",
+    "date": "2025-06-22",
+    "status": "Successful"
+  },
+  {
+    "id": "pmt002",
+    "hotelName": "Cozy Stay Lodge",
+    "ceoName": "Akosua Boateng",
+    "email": "akosua@cozystay.com",
+    "plan": "Free",
+    "amount": 0,
+    "method": "—",
+    "transactionId": "N/A",
+    "date": "2025-06-19",
+    "status": "Pending"
+  },
+  {
+    "id": "pmt003",
+    "hotelName": "Golden Palm Resort",
+    "ceoName": "Yaw Ofori",
+    "email": "yaw@goldenpalm.com",
+    "plan": "Premium",
+    "amount": 3000,
+    "method": "Mobile Money",
+    "transactionId": "TXN845289",
+    "date": "2025-06-20",
+    "status": "Successful"
+  },
+  {
+    "id": "pmt004",
+    "hotelName": "Skyline Suites",
+    "ceoName": "Abena Serwaa",
+    "email": "abena@skylinesuites.com",
+    "plan": "Premium",
+    "amount": 2700,
+    "method": "Card",
+    "transactionId": "TXN840912",
+    "date": "2025-06-15",
+    "status": "Failed"
+  }
+]

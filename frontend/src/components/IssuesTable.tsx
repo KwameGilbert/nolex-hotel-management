@@ -16,7 +16,7 @@ const IssuesTable = () => {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedIssue, setSelectedIssue] = useState<Issue | null>(null);
+ // const [selectedIssue, setSelectedIssue] = useState<Issue | null>(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [editForm, setEditForm] = useState<Issue | null>(null);
 

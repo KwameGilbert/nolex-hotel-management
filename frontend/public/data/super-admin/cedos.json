@@ -1,0 +1,22 @@
+{
+  "ceos": [
+    {
+      "id": 1,
+      "name": "Kwame Mensah",
+      "email": "kwame@example.com",
+      "phone": "0540000001",
+      "assignedHotels": 3,
+      "status": "Active",
+      "created": "2024-09-15"
+    },
+    {
+      "id": 2,
+      "name": "Akosua Boateng",
+      "email": "akosua@example.com",
+      "phone": "0240000002",
+      "assignedHotels": 1,
+      "status": "Suspended",
+      "created": "2024-10-01"
+    }
+  ]
+}

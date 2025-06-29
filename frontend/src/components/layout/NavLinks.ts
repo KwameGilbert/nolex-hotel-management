@@ -28,6 +28,7 @@ export const navLinks = [
       { icon: ChartBar, label: 'Reports', path: 'reports', role: 'manager' },
       { icon: ChartAreaIcon, label: 'My Issues', path: 'issues', role: 'manager' },
       { icon: ChartAreaIcon, label: 'Make Report', path: 'make-reports-admin', role: 'manager' },
+      { icon: ChartAreaIcon, label: 'Complains', path: 'complain', role: 'manager' },
     ],
   },
   {

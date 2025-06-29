@@ -1,0 +1,34 @@
+{
+  "hotels": [
+    {
+      "id": 1,
+      "name": "Golden Palace Hotel",
+      "ceo": "Kwame Agyemang",
+      "email": "kwame@goldenpalace.com",
+      "branches": 5,
+      "plan": "Premium",
+      "status": "Active",
+      "registered": "2024-01-15"
+    },
+    {
+      "id": 2,
+      "name": "Sunset View Lodge",
+      "ceo": "Ama Serwaa",
+      "email": "ama@sunsetview.com",
+      "branches": 2,
+      "plan": "Free",
+      "status": "Suspended",
+      "registered": "2023-09-03"
+    },
+    {
+      "id": 3,
+      "name": "Ocean Breeze Resort",
+      "ceo": "Yaw Opoku",
+      "email": "yaw@oceanbreeze.com",
+      "branches": 8,
+      "plan": "Premium",
+      "status": "Active",
+      "registered": "2022-07-28"
+    }
+  ]
+}

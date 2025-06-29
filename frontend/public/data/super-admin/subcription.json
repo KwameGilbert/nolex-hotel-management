@@ -1,0 +1,6 @@
+{
+  "plans": [
+    { "type": "Free Plan", "hotels": 12 },
+    { "type": "Premium Plan", "hotels": 36 }
+  ]
+}

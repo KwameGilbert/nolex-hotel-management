@@ -1,0 +1,36 @@
+{
+  "complaints": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "2Rgjy@example.com",
+      "complain": "My room is not clean",
+      "status": "Pending",
+      "priority": "Medium"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "complain": "AC not working",
+      "status": "Under Review",
+      "priority": "High"
+    },
+    {
+      "id": 3,
+      "name": "Mark Anthony",
+      "email": "mark.anthony@example.com",
+      "complain": "Late room service",
+      "status": "In Progress",
+      "priority": "Low"
+    },
+    {
+      "id": 4,
+      "name": "Lucy Bright",
+      "email": "lucy.bright@example.com",
+      "complain": "Room had no towels",
+      "status": "Resolved",
+      "priority": "Medium"
+    }
+  ]
+}

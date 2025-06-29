@@ -1,0 +1,10 @@
+{
+  "companyName": "EliteWeb Hotels",
+  "supportEmail": "support@eliteweb.com",
+  "defaultCurrency": "GHS",
+  "language": "en",
+  "timezone": "Africa/Accra",
+  "autoBackup": true,
+  "twoFactorAuth": true,
+  "notifyOnBooking": false
+}
