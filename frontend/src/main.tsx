@@ -73,6 +73,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="issues" element={<Issues />} />
         <Route path="make-reports-admin" element={<MakeReport />} />
         <Route path="add-room-type" element={<RoomType />} />
+        <Route path="complain" element={<Complains/>}/>
         <Route path="pay-booking/:bookingCode" element={<PayBooking />} />
         <Route path="refunds" element={<RefundsPage />} />
       </Route>
@@ -99,6 +100,12 @@ createRoot(document.getElementById("root")!).render(
 
       <Route path="/super-admin" element={<SuperAdminMainLayout/>}>
         <Route index element={<SuperAdmin/>}/>
+        <Route path="super-admin-hotels" element={<AllHotels/>}/>
+        <Route path="super-admin-ceo" element={<Ceo/>}/>
+        <Route path="super-admin-ceo/add-ceo" element={<AddCEOPage/>}/>
+        <Route path="payments" element={<PaymentsPage />} />
+        <Route path="system-reports" element={<SystemReportsPage />}/>
+        <Route path="settings" element={<SettingsPage />} />
       </Route>
 
       {/* 404 catch-all route - must be LAST in the Routes list */}

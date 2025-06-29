@@ -1,0 +1,24 @@
+{
+  "stats": [
+    {
+      "title": "Total Hotels",
+      "value": "24",
+      "description": "+9% from last month"
+    },
+    {
+      "title": "Total CEOs",
+      "value": "18",
+      "description": "2 new CEOs added"
+    },
+    {
+      "title": "Total Branches",
+      "value": "56",
+      "description": "+4 new branches opened"
+    },
+    {
+      "title": "Total Revenue",
+      "value": "₵128,500",
+      "description": "+12.5% increase"
+    }
+  ]
+}

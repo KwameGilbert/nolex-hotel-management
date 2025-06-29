@@ -1,0 +1,8 @@
+{
+  "revenueBySource": [
+    { "name": "Room Revenue", "value": 68 },
+    { "name": "Food & Beverage", "value": 22 },
+    { "name": "Events & Conferences", "value": 7 },
+    { "name": "Other Services", "value": 3 }
+  ]
+}

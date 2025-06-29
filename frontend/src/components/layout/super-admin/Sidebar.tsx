@@ -16,15 +16,17 @@ const SuperAdminSidebar = (probs: SidebarProps) => {
       {/* Header */}
       <div className="p-4 border-b border-gray-200">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-blue-600 rounded-2xl flex items-center justify-center">
+          <div className="w-10 h-10 bg-blue-600 rounded-3xl flex items-center justify-center">
             <span className="text-white font-bold text-sm">
-              <Bed className="w-7 h-7"/>
+              <Bed className="w-6 h-6"/>
             </span>
           </div>
           <div className="flex items-center">
             <span className={`font-semibold whitespace-nowrap transition-all duration-500 ${
               probs.showLabels ? "opacity-100 max-w-full" : "opacity-0 max-w-0 overflow-hidden"
-            }`}>Hotel Logo</span>
+            }`}>Nolex
+            <p className="text-[10px]">Hotels Management</p>
+            </span>
           </div>
         </div>
       </div>

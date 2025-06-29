@@ -26,7 +26,7 @@ const SuperAdminMainLayout = () => {
       <main className="flex-1 overflow-y-auto px-5 py-3">
           <Outlet />
           
-          <footer className="bg-white text-slate-500 py-1">
+          <footer className="bg-white text-slate-500 py-1 fixed bottom-0 w-[90%] mx-auto">
             <div className="text-center text-[11px] flex items-center justify-around">
             <p>&copy; {new Date().getFullYear()} Hotel Management System</p>
             <p>Developed by: Nolex Prime <br />Contact Us: 0550807914/0541436414</p>

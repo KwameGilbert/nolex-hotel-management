@@ -89,6 +89,10 @@ const ContactForms = () => {
           />
         </div>
         
+        <button className="flex items-center gap-2 bg-[#C9A55C] text-white py-2 px-4 rounded-md w-full justify-center">
+          <Send/>
+          Send Message
+        </button>
       </form>
     </div>
   );
