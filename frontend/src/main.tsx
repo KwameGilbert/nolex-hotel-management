@@ -32,6 +32,11 @@ import About from './pages/mainpage/About.tsx'
 import Contact from './pages/mainpage/Contact.tsx'
 import SuperAdminMainLayout from './components/layout/super-admin/MainLayout.tsx'
 import SuperAdmin from './pages/super-admin/Dashboard.tsx'
+import ViewBooking from './pages/admin/ViewBooking.tsx'
+import EditBooking from './pages/admin/EditBooking.tsx'
+import ViewCustomer from './pages/admin/ViewCustomer.tsx'
+import EditCustomer from './pages/admin/EditCustomer.tsx'
+import RefundsPage from './pages/admin/RefundsPage.tsx'
 
 
 
@@ -55,7 +60,11 @@ createRoot(document.getElementById("root")!).render(
         <Route index element={<Dashboard />} />
         <Route path="new-booking" element={<NewBooking />} />
         <Route path="bookings" element={<Bookings />} />
+        <Route path="bookings/:bookingId/view" element={<ViewBooking />} />
+        <Route path="bookings/:bookingId/edit" element={<EditBooking />} />
         <Route path="customers" element={<Customer />} />
+        <Route path="customers/:id/view" element={<ViewCustomer />} />
+        <Route path="customers/:id/edit" element={<EditCustomer />} />
         <Route path="room-availability" element={<RoomAvailability />} />
         <Route path="staff" element={<Staff />} />
         <Route path="reports" element={<Reports />} />
@@ -65,6 +74,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="make-reports-admin" element={<MakeReport />} />
         <Route path="add-room-type" element={<RoomType />} />
         <Route path="pay-booking/:bookingCode" element={<PayBooking />} />
+        <Route path="refunds" element={<RefundsPage />} />
       </Route>
 
       {/* Protected Receptionist Routes */}
