@@ -28,9 +28,10 @@ export default function Settings() {
     name: "",
     email: "",
     phone: "",
-    password: "",
-    role: ""
+    password: ""
   });
+
+  const [mfaEnabled, setMfaEnabled] = useState(false);
 
   // Handle form input changes for general settings
   const handleGeneralChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -94,8 +95,8 @@ export default function Settings() {
         email: profileSettings.email,
         phone: profileSettings.phone,
         password: profileSettings.password,
-        role: profileSettings.role,
-        is_active: 1
+        is_active: 1,
+        mfa: mfaEnabled ? 1 : 0
       };
 
       // Placeholder API URL
@@ -381,21 +382,23 @@ export default function Settings() {
                       required
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Role
+                  {/* MFA Toggle Switch */}
+                  <div className="flex items-center mt-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-2 mr-4">
+                      Enable MFA
                     </label>
-                    <select
-                      name="role"
-                      value={profileSettings.role}
-                      onChange={handleProfileChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      required
+                    <button
+                      type="button"
+                      onClick={() => setMfaEnabled((prev) => !prev)}
+                      className={`relative inline-flex h-6 w-12 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-300 ${mfaEnabled ? 'bg-blue-600' : 'bg-gray-300'}`}
+                      aria-pressed={mfaEnabled}
                     >
-                      <option value="">Select Role</option>
-                      <option value="receptionist">Receptionist</option>
-                      <option value="manager">Manager</option>
-                    </select>
+                      <span
+                        className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform ${mfaEnabled ? 'translate-x-6' : 'translate-x-1'}`}
+                      />
+                      <span className="sr-only">Toggle MFA</span>
+                    </button>
+                    <span className={`ml-3 text-sm font-medium ${mfaEnabled ? 'text-blue-600' : 'text-gray-400'}`}>{mfaEnabled ? 'ON' : 'OFF'}</span>
                   </div>
                 </div>
 
