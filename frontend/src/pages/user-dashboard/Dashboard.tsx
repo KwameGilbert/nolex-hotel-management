@@ -149,7 +149,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="w-full px-0 space-y-6">
       {/* Welcome Section */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <h1 className="text-2xl font-serif font-bold text-[#1A365D] mb-2">

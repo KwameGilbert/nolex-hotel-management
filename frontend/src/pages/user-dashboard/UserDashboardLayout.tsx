@@ -67,7 +67,7 @@ export default function UserDashboardLayout() {
   const currentNav = navigation.find(nav => nav.href === location.pathname) || navigation[0];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50">
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div 
@@ -77,10 +77,10 @@ export default function UserDashboardLayout() {
       )}
 
       {/* Sidebar */}
-      <div className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}>
-        <div className="flex flex-col h-full">
+      <aside className={`lg:sticky top-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out h-screen flex flex-col ${
+        sidebarOpen ? 'fixed translate-x-0' : 'fixed -translate-x-full'
+      } lg:translate-x-0 lg:static`}>
+        <div className="flex flex-col h-full overflow-y-auto">
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-gray-200">
             <Link to="/" className="text-2xl font-serif font-bold text-[#C9A55C]">
@@ -117,7 +117,7 @@ export default function UserDashboardLayout() {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                  className={`flex items-center space-x-3 px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-[#C9A55C] text-white"
                       : "text-gray-600 hover:bg-gray-100 hover:text-[#1A365D]"
@@ -132,22 +132,22 @@ export default function UserDashboardLayout() {
           </nav>
 
           {/* Logout */}
-          <div className="p-6 border-t border-gray-200">
+          <div className="p-6 border-t border-gray-200 mt-auto">
             <button
               onClick={handleLogout}
-              className="flex items-center space-x-3 w-full px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-red-600 rounded-xl transition-colors"
+              className="flex items-center space-x-3 w-full px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-red-600 rounded-xl transition-colors"
             >
               <LogOut className="h-5 w-5" />
               <span>Logout</span>
             </button>
           </div>
         </div>
-      </div>
+      </aside>
 
       {/* Main content */}
-      <div className="lg:pl-64">
+      <main className="flex-1 flex flex-col min-h-screen">
         {/* Top header */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30">
           <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
             <div className="flex items-center space-x-4">
               <button
@@ -175,12 +175,11 @@ export default function UserDashboardLayout() {
             </div>
           </div>
         </header>
-
         {/* Page content */}
-        <main className="p-4 sm:p-6 lg:p-8">
+        <div className="flex-1 pt-2 pb-4 pr-4 ml-4 sm:pb-6 sm:pr-6 lg:pb-8 lg:pr-8">
           <Outlet />
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 } 

@@ -87,7 +87,7 @@ export default function UserSignup() {
         dateOfBirth: formData.dateOfBirth,
         password: formData.password,
       })
-      .then((res) => {
+      .then((res: any) => {
         if (res.data.code === 200 && res.data.status === 'success') {
           Swal.fire({
             title: "Account Created Successfully",
@@ -105,7 +105,7 @@ export default function UserSignup() {
         }
         setIsLoading(false);
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
         Swal.fire({
           title: "Error",
@@ -117,257 +117,253 @@ export default function UserSignup() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="flex flex-col h-screen">
-        {/* Logo (shows on all screen sizes) */}
-        <div className="flex justify-center items-center pt-8 pb-4">
-          <div className="text-center">
-            <div className="w-20 h-20 rounded-full mx-auto mb-4">
-              <img src={Image1} alt="" className="w-full h-full rounded-full" />
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      {/* Background Image */}
+      <div className="fixed inset-0 z-0">
+        <img src={Image1} alt="Azure Horizon Hotel" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-black/50"></div>
+      </div>
+
+      {/* Centered Modal */}
+      <div className="relative z-10 w-full max-w-lg">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+          {/* Logo and Header */}
+          <div className="text-center mb-6">
+            <div className="w-16 h-16 rounded-full mx-auto mb-3 overflow-hidden">
+              <img src={Image1} alt="Azure Horizon" className="w-full h-full object-cover" />
             </div>
-            <h1 className="text-3xl font-serif font-bold text-[#C9A55C] mb-2">
+            <h1 className="text-2xl font-serif font-bold text-[#C9A55C] mb-1">
               Azure Horizon
             </h1>
             <p className="text-gray-600 text-sm">Create your account</p>
           </div>
-        </div>
 
-        {/* Signup form */}
-        <div className="w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-y-auto">
-          {/* Decorative circles */}
-          <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#C9A55C] rounded-full opacity-10"></div>
-          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#1A365D] rounded-full opacity-10"></div>
+          <div className="text-center mb-6">
+            <h2 className="text-xl font-serif font-bold text-[#1A365D] mb-2">
+              Create Account
+            </h2>
+            <p className="text-gray-600 text-sm">
+              Join Azure Horizon and start your journey
+            </p>
+          </div>
 
-          <div className="w-full max-w-md z-10 my-8">
-            <div className="bg-white p-8 lg:p-10 rounded-2xl shadow-lg border border-gray-100">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl lg:text-3xl font-serif font-bold text-[#1A365D] mb-2">
-                  Create Account
-                </h2>
-                <p className="text-gray-600">
-                  Join Azure Horizon and start your journey
-                </p>
+          <form onSubmit={handleSignup} className="space-y-4">
+            {/* Name fields */}
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label htmlFor="firstName" className="block text-xs font-medium text-gray-700 mb-1">
+                  First Name *
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+                    <User className="h-4 w-4 text-gray-400" />
+                  </div>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    className="w-full pl-8 pr-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
+                    placeholder="First name"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
               </div>
-
-              <form onSubmit={handleSignup} className="space-y-6">
-                {/* Name fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name *
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <User className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <input
-                        id="firstName"
-                        name="firstName"
-                        type="text"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
-                        placeholder="First name"
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
+              <div>
+                <label htmlFor="lastName" className="block text-xs font-medium text-gray-700 mb-1">
+                  Last Name *
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+                    <User className="h-4 w-4 text-gray-400" />
                   </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name *
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <User className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <input
-                        id="lastName"
-                        name="lastName"
-                        type="text"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
-                        placeholder="Last name"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Email and Phone */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Mail className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
-                        placeholder="Enter your email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Phone className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
-                        placeholder="Phone number"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Date of Birth */}
-                <div>
-                  <label htmlFor="dateOfBirth" className="block text-sm font-medium text-gray-700 mb-2">
-                    Date of Birth
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Calendar className="h-5 w-5 text-gray-400" />
-                    </div>
-                    <input
-                      id="dateOfBirth"
-                      name="dateOfBirth"
-                      type="date"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none text-sm"
-                      value={formData.dateOfBirth}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-
-                {/* Password fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                      Password *
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Lock className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <input
-                        id="password"
-                        name="password"
-                        type={showPassword ? "text" : "password"}
-                        className="w-full pl-10 pr-12 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
-                        placeholder="Create password"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                        required
-                      />
-                      <button
-                        type="button"
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 transition-colors duration-200"
-                        onClick={() => setShowPassword(!showPassword)}
-                        tabIndex={-1}
-                      >
-                        {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                      </button>
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
-                      Confirm Password *
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Lock className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <input
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        type={showConfirmPassword ? "text" : "password"}
-                        className="w-full pl-10 pr-12 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
-                        placeholder="Confirm password"
-                        value={formData.confirmPassword}
-                        onChange={handleInputChange}
-                        required
-                      />
-                      <button
-                        type="button"
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 transition-colors duration-200"
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        tabIndex={-1}
-                      >
-                        {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full bg-[#C9A55C] text-white py-3 rounded-xl hover:bg-[#B89448] transition duration-200 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                >
-                  {isLoading ? (
-                    "Creating Account..."
-                  ) : (
-                    <>
-                      Create Account
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </>
-                  )}
-                </button>
-              </form>
-
-              <div className="mt-8 text-center">
-                <p className="text-gray-600 text-sm">
-                  Already have an account?{" "}
-                  <Link
-                    to="/user-login"
-                    className="text-[#C9A55C] hover:text-[#B89448] font-medium transition-colors duration-200"
-                  >
-                    Sign in here
-                  </Link>
-                </p>
-              </div>
-
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <div className="text-center">
-                  <p className="text-gray-500 text-xs">
-                    By creating an account, you agree to our{" "}
-                    <Link to="/terms" className="text-[#C9A55C] hover:underline">
-                      Terms of Service
-                    </Link>{" "}
-                    and{" "}
-                    <Link to="/privacy" className="text-[#C9A55C] hover:underline">
-                      Privacy Policy
-                    </Link>
-                  </p>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    className="w-full pl-8 pr-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
+                    placeholder="Last name"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                  />
                 </div>
               </div>
             </div>
+
+            {/* Email and Phone */}
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label htmlFor="email" className="block text-xs font-medium text-gray-700 mb-1">
+                  Email Address *
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+                    <Mail className="h-4 w-4 text-gray-400" />
+                  </div>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    className="w-full pl-8 pr-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="phone" className="block text-xs font-medium text-gray-700 mb-1">
+                  Phone Number
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+                    <Phone className="h-4 w-4 text-gray-400" />
+                  </div>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    className="w-full pl-8 pr-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
+                    placeholder="Phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Date of Birth */}
+            <div>
+              <label htmlFor="dateOfBirth" className="block text-xs font-medium text-gray-700 mb-1">
+                Date of Birth
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+                  <Calendar className="h-4 w-4 text-gray-400" />
+                </div>
+                <input
+                  id="dateOfBirth"
+                  name="dateOfBirth"
+                  type="date"
+                  className="w-full pl-8 pr-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none text-sm"
+                  value={formData.dateOfBirth}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
+            {/* Password fields */}
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label htmlFor="password" className="block text-xs font-medium text-gray-700 mb-1">
+                  Password *
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+                    <Lock className="h-4 w-4 text-gray-400" />
+                  </div>
+                  <input
+                    id="password"
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    className="w-full pl-8 pr-8 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-0 pr-2 flex items-center text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                    onClick={() => setShowPassword(!showPassword)}
+                    tabIndex={-1}
+                  >
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label htmlFor="confirmPassword" className="block text-xs font-medium text-gray-700 mb-1">
+                  Confirm Password *
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+                    <Lock className="h-4 w-4 text-gray-400" />
+                  </div>
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
+                    className="w-full pl-8 pr-8 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#C9A55C] focus:border-transparent outline-none placeholder-gray-400 text-sm"
+                    placeholder="Confirm"
+                    value={formData.confirmPassword}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-0 pr-2 flex items-center text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    tabIndex={-1}
+                  >
+                    {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-[#C9A55C] text-white py-3 rounded-lg hover:bg-[#B89448] transition duration-200 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center mt-6"
+            >
+              {isLoading ? (
+                "Creating Account..."
+              ) : (
+                <>
+                  Create Account
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </>
+              )}
+            </button>
+          </form>
+
+          <div className="mt-6 text-center">
+            <p className="text-gray-600 text-sm">
+              Already have an account?{" "}
+              <Link
+                to="/user-login"
+                className="text-[#C9A55C] hover:text-[#B89448] font-medium transition-colors duration-200"
+              >
+                Sign in here
+              </Link>
+            </p>
           </div>
 
-          <footer className="mt-8 text-center">
-            <p className="text-gray-500 text-sm">
-              &copy; {new Date().getFullYear()} Azure Horizon. All rights reserved.
-            </p>
-          </footer>
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <div className="text-center">
+              <p className="text-gray-500 text-xs">
+                By creating an account, you agree to our{" "}
+                <Link to="/terms" className="text-[#C9A55C] hover:underline">
+                  Terms of Service
+                </Link>{" "}
+                and{" "}
+                <Link to="/privacy" className="text-[#C9A55C] hover:underline">
+                  Privacy Policy
+                </Link>
+              </p>
+            </div>
+          </div>
         </div>
+
+        <footer className="mt-6 text-center">
+          <p className="text-white text-sm">
+            &copy; {new Date().getFullYear()} Azure Horizon. All rights reserved.
+          </p>
+        </footer>
       </div>
     </div>
   );
