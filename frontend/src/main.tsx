@@ -38,6 +38,12 @@ import ViewCustomer from './pages/admin/ViewCustomer.tsx'
 import EditCustomer from './pages/admin/EditCustomer.tsx'
 import RefundsPage from './pages/admin/RefundsPage.tsx'
 
+// User authentication and dashboard imports
+import UserLogin from './pages/UserLogin.tsx'
+import UserSignup from './pages/UserSignup.tsx'
+import UserForgotPassword from './pages/UserForgotPassword.tsx'
+import UserDashboard from './pages/user-dashboard/index.tsx'
+
 
 
 createRoot(document.getElementById("root")!).render(
@@ -50,7 +56,13 @@ createRoot(document.getElementById("root")!).render(
       <Route path='/about' element={<About/>}/>
       <Route path='/contact' element={<Contact/>}/>
 
+      {/* User Authentication Routes */}
+      <Route path='/user-login' element={<UserLogin/>}/>
+      <Route path='/user-signup' element={<UserSignup/>}/>
+      <Route path='/forgot-password' element={<UserForgotPassword/>}/>
 
+      {/* User Dashboard Routes */}
+      <Route path="/user-dashboard/*" element={<UserDashboard />} />
 
       <Route path='/login' element={<Login/>}/>
       <Route path='/otp' element={<OTP />} />
